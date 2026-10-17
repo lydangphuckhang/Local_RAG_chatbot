@@ -1,0 +1,27 @@
+# Environment
+.venv/
+venv/
+env/
+ENV/
+
+#Complements of Python
+pycache/
+*.py[cod]
+*$py.class
+*.so
+
+#Keys/secrects
+.env
+
+#data
+data/raw/*
+!data/raw/.gitkeep
+
+data/processed/*
+!data/processed/.gitkeep
+
+vector_db/*
+!vector_db/.gitkeep
+
+#Chainlit
+.Chainlit/

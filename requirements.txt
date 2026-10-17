@@ -1,0 +1,22 @@
+# UI Framework
+chainlit
+
+# Langchain Ecosystem
+langchain
+langchain-community
+langchain-huggingface
+langchain-chroma
+
+#Document loading & Text Splitting
+pypdf
+tiktoken
+
+#Embeddings & Vector Store
+sentence-transformers
+chromadb
+
+#Local LLM & 4-bit Quantization (for Qwen2.5)
+torch
+transformers
+accelerate
+bitsandbytes
