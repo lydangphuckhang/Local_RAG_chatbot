@@ -23,5 +23,8 @@ data/processed/*
 vector_db/*
 !vector_db/.gitkeep
 
+chroma_db/
+
 #Chainlit
 .Chainlit/
+
