@@ -3,7 +3,7 @@ from langchain_core.documents import Document
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
-def build_vector_store(chunks: List[Document], embedding_model: HuggingFaceEmbeddings, persist_directory: str = "../chroma_db" ) -> Chroma:
+def build_vector_store(chunks: List[Document], embedding_model: HuggingFaceEmbeddings, persist_directory: str = "D:/Project/Local_RAG_chatbot/chroma_db" ) -> Chroma:
     """
     Build and persist a Chroma vector database from text chunks and an embedding model.
 
@@ -45,8 +45,11 @@ def get_retriever(vector_store: Chroma, k:int =3):
     """
     try:
         retriever= vector_store.as_retriever(
-            search_type= "similarity",
-            search_kwargs= {'k':k} 
+            search_type= "mmr",
+            search_kwargs= {
+            'k':k ,
+            "fetch_k": 20,   
+            "lambda_mult": 0.5}
         )
         return retriever
     except Exception as e:
