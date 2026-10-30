@@ -33,7 +33,9 @@ class QwenLocal:
                 self.model_name,
                 quantization_config= quant_config,
                 device_map='auto',
-                local_files_only=True
+                local_files_only=True,
+                max_memory={0: "1.8GB", "cpu": "13GB"}, 
+                offload_folder="tmp_offload"
             )
             hug_pipe= pipeline(
                 "text-generation",
