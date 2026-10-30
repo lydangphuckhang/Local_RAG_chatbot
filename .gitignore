@@ -28,3 +28,4 @@ chroma_db/
 #Chainlit
 .Chainlit/
 
+models_cache/

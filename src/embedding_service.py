@@ -1,3 +1,5 @@
+import os
+os.environ["HF_HOME"] = "D:/Project/Local_RAG_chatbot/models_cache"
 from langchain_huggingface import HuggingFaceEmbeddings
 
 def get_embedding_model(model_name: str = "sentence-transformers/all-MiniLM-L6-v2"):
