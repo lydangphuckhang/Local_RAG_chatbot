@@ -27,28 +27,3 @@ def get_retriever(vector_store: Chroma, k:int =3):
     except Exception as e:
         raise RuntimeError(f"Failed to configure retriever: {str(e)}")
 
-if __name__ == "__main__":
-    import os
-    from document_loader import load_document
-    from text_splitter import get_text_chunks
-    from embedding_service import get_embedding_model
-
-    test_file = "D:/Project/Local_RAG_chatbot/data/raw/sample.pdf"
-    if os.path.exists(test_file):
-        try: 
-            raw_docs= load_document(test_file)
-            chunks= get_text_chunks(raw_docs)
-            embeddings= get_embedding_model()
-            vector_store= build_vector_store(chunks=chunks, embedding_model= embeddings)
-            retriever= get_retriever(vector_store=vector_store,k=2)
-            test_question= "What is this document about?"
-            reponse= retriever.invoke(test_question)
-            print(f"Numbers of retrieved chunks: {len(reponse)}")
-            for i in range(len(reponse)):
-                print(f"The {i+1} chunk retrieved content: {reponse[i].page_content}")
-                print(f"(Metadata: {reponse[i].metadata}) ")
-        
-        except Exception as e:
-            print(f"Test failed: {str(e)}")
-    else:
-        raise FileNotFoundError("Test file not found")
